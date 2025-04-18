@@ -1,71 +1,61 @@
-// 2.  **Manipulación de arrays**:
-// - Crea una función que encuentre el número más grande en un array.
-// - Crea una función que elimine los elementos duplicados de un array.
-// - Crea una función que invierta el orden de los elementos en un array.
+// ## 8. Ejercicios Prácticos
 
+// 1.  Crea una función que calcule el área de un círculo.
+const calcularAreaDeCirculo = (radio) => 3.14*radio**2;
+console.log(calcularAreaDeCirculo(3));
 
-function numeroMasGrande(numeros){
-    let x = 0;
-    for (const numero of numeros) {
-        if (numero > x){
-            x = numero;
-        }
-        
+// 2.  Crea una función que determine si un número es par o impar.
+const parOImpar = (numero) => (numero%2 ==0 ? "par" : "impar");
+console.log(parOImpar(4));
+
+// 3.  Crea un objeto "calculadora" con métodos para sumar, restar, multiplicar y dividir.
+const calculadora ={
+    sumar : (x,y) =>  x + y,
+    restar : (x,y) =>  x - y,
+    multiplicar : (x,y) => x *y,
+    dividir : (x,y) => x / y
+}
+
+console.log(calculadora.sumar(1,1));
+console.log(calculadora.restar(10,4));
+console.log(calculadora.multiplicar(3,3))
+console.log(calculadora.dividir(25,5));
+// 4.  Crea una función que tome un array de números y devuelva un nuevo array con los números pares.
+
+let numeros = [1,2,3,4,5]
+
+const soloParesArrow = (array) => array.filter(n=> n%2 ===0);
+function soloPares(array){
+    let pares = [];
+    for (const n of array) {
+        (n%2 ==0 ? pares.push(n): null)
     }
-    return x
+    return pares;
 }
-let numeros = [1,12,123,1234,12300]
-//console.log(`El numero mas grande es: ${numeroMasGrande(numeros)}`)
-console.log(numeros)
 
-function eliminaDuplicados(lista){
-    let resultado = [];
-    for (const elemento of lista) {
-        if (!resultado.includes(elemento)){
-            resultado.push(elemento)
-        }
+console.log(soloPares(numeros))
+console.log(soloParesArrow(numeros))
+
+// 5.  Crea una función que simule un contador utilizando closures.
+function contador(){
+    let contador = 0;
+    return function(){
+        contador++;
+        console.log(contador);
     }
-    lista = resultado
-    console.log(lista)
 }
 
-//eliminaDuplicados(numeros)
+const incrementar = contador();
+incrementar();
+incrementar();
+// 6.  Crea un objeto "persona" con propiedades como "nombre", "edad" y un método "presentarse" que imprima una presentación de la persona.
 
-function revertirArray(lista){
-   console.log( lista = lista.reverse());
-}
-
-
-
-// 3.  **Objetos**:
-// - Crea un objeto "persona" con propiedades como "nombre", "edad" y "profesión".
-// - Crea una función que tome un array de objetos "persona" y devuelva un nuevo array con los nombres de todas las personas.
-
-const persona = {nombre : "Joaquin ", edad : 30, profesion : "Mamahuevol"}
-let personas = [persona,persona,persona]
-
-function nombreDePersonas(personas){
-    let nombres = [];
-    for (const persona of personas) {
-        nombres.push(persona.nombre)
-
+const persona= {
+    nombre : "Joaquin",
+    edad : 30,
+    saludar : function (){
+        console.log(`Hola, me llamo ${this.nombre} y  tengo ${this.edad} años`)
     }
-
-    return nombres
 }
-//console.log(nombreDePersonas(personas))
 
-// 4.  **Combinación de tipos**:
-// - Crea una función que tome un array de strings y devuelva un objeto donde las claves sean las strings y los valores sean sus longitudes.
-
-const array = ["Perro","Gato","Arbol"];
-
-function conversorAObjeto(array){
-    let objeto= {};
-    for (const clave of array) {
-        objeto[clave] =clave.length;
-    }
-    return objeto
-}
-const objeto = conversorAObjeto(array);
-console.log(objeto);
+persona.saludar();
